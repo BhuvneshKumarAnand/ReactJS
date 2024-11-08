@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>React App</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const App = () => {
+            // State hooks for each vehicle count
+            const [carCount, setCarCount] = React.useState(0);
+            const [bikeCount, setBikeCount] = React.useState(0);
+            const [scootyCount, setScootyCount] = React.useState(0);
+            const [bicycleCount, setBicycleCount] = React.useState(0);
+
+            // Function to increase vehicle count
+            const increaseCount = (vehicle) => {
+                switch (vehicle) {
+                    case "car":
+                        setCarCount(carCount + 1);
+                        break;
+                    case "bike":
+                        setBikeCount(bikeCount + 1);
+                        break;
+                    case "scooty":
+                        setScootyCount(scootyCount + 1);
+                        break;
+                    case "bicycle":
+                        setBicycleCount(bicycleCount + 1);
+                        break;
+                    default:
+                        break;
+                }
+            };
+
+            // Function to decrease vehicle count
+            const decreaseCount = (vehicle) => {
+                switch (vehicle) {
+                    case "car":
+                        if (carCount > 0) setCarCount(carCount - 1);
+                        break;
+                    case "bike":
+                        if (bikeCount > 0) setBikeCount(bikeCount - 1);
+                        break;
+                    case "scooty":
+                        if (scootyCount > 0) setScootyCount(scootyCount - 1);
+                        break;
+                    case "bicycle":
+                        if (bicycleCount > 0) setBicycleCount(bicycleCount - 1);
+                        break;
+                    default:
+                        break;
+                }
+            };
+
+            return (
+                <>
+                    <p>List of all the vehicles count in the parking.</p>
+                    <ol>
+                        <li>
+                            <p>
+                                <b>Car: </b> {carCount} &emsp;
+                                <button onClick={() => increaseCount('car')}>Increase</button>
+                                <button onClick={() => decreaseCount('car')}>Decrease</button>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <b>Bike: </b> {bikeCount} &emsp;
+                                <button onClick={() => increaseCount('bike')}>Increase</button>
+                                <button onClick={() => decreaseCount('bike')}>Decrease</button>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <b>Scooty: </b> {scootyCount} &emsp;
+                                <button onClick={() => increaseCount('scooty')}>Increase</button>
+                                <button onClick={() => decreaseCount('scooty')}>Decrease</button>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <b>Bicycle:</b> {bicycleCount} &emsp;
+                                <button onClick={() => increaseCount('bicycle')}>Increase</button>
+                                <button onClick={() => decreaseCount('bicycle')}>Decrease</button>
+                            </p>
+                        </li>
+                    </ol>
+                </>
+            );
+        };
+
+        const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+        rootElement.render(<App />);
+    </script>
+</body>
+
+</html>
